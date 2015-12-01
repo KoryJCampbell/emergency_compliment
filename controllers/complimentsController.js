@@ -20,8 +20,13 @@ var complimentsController = {
     res.redirect("/compliments")
   }
   // edit action code goes here...
-
+  edit: function(req,res){
+     ComplimentModel.findById(req.params.id, function(err, doc){
+       res.render("compliments/edit", {compliment: doc})
+     })
+   },
  // update action code goes here...
+
 }
 
 module.exports = complimentsController;
