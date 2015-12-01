@@ -22,6 +22,18 @@ var complimentsController = {
   // edit action code goes here...
 
  // update action code goes here...
+
+ update: function(req,res){
+   AuthorModel.findById(req.params.id, function(err, docs){
+     docs.name = req.body.name
+     docs.save(function(err){
+       if(!err){
+         res.redirect("/authors/" + req.params.id)
+       }
+     })
+   })
+ },
+
 }
 
 module.exports = complimentsController;
